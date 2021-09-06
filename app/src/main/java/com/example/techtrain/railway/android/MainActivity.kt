@@ -12,6 +12,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<TextView>(R.id.text).setText(R.string.hello)
-        findViewById<ImageView>(R.id.image).setBackgroundColor(Color.parseColor("#000000"))
+        findViewById<ImageView>(R.id.image).setImageResource(R.color.black)
     }
 }
