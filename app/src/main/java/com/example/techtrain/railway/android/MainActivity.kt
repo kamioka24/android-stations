@@ -9,6 +9,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<TextView>(R.id.text).text = "こんにちは!!"
+        findViewById<TextView>(R.id.text).setText(R.string.hello)
     }
 }
