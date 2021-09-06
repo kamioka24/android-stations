@@ -11,6 +11,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<TextView>(R.id.text).setText(R.string.hello)
-        findViewById<ImageView>(R.id.image).setImageResource(R.color.black)
+//        findViewById<ImageView>(R.id.image).setImageResource(R.color.black)
     }
 }
