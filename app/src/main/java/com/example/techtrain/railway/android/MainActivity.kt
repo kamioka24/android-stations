@@ -1,6 +1,8 @@
 package com.example.techtrain.railway.android
 
+import android.graphics.Color
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -10,5 +12,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<TextView>(R.id.text).setText(R.string.hello)
+        findViewById<ImageView>(R.id.image).setBackgroundColor(Color.parseColor("#000000"))
     }
 }
