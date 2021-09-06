@@ -1,6 +1,5 @@
 package com.example.techtrain.railway.android
 
-import android.graphics.Color
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
