@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Railway</string>
-    <string name="hello">こんにちは！！！！！！</string>
+    <string name="app_name" translatable="false">Railway</string>
+    <string name="hello">Hello!!</string>
 </resources>
