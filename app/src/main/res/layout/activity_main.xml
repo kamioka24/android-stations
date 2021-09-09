@@ -7,7 +7,7 @@
         tools:context=".MainActivity">
 
     <EditText
-            android:id="@+id/editText"
+            android:id="@+id/edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -20,10 +20,10 @@
             android:layout_marginTop="8dp"
             android:text="SUBMIT"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_text" />
 
     <TextView
-            android:id="@+id/textView"
+            android:id="@+id/text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -32,12 +32,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/image_view"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_launcher"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView" />
+            app:layout_constraintTop_toBottomOf="@id/text_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
