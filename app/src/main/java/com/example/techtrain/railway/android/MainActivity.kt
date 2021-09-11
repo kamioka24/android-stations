@@ -2,6 +2,7 @@ package com.example.techtrain.railway.android
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.techtrain.railway.android.databinding.ActivityMainBinding
@@ -15,6 +16,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.d("MainActivity", "onCreate")
 
         // ② binding の初期化とついでに setContentView も行う。
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
@@ -36,6 +39,31 @@ class MainActivity : AppCompatActivity() {
 //        editText.addTextChangedListener {
 //            textView.text = it.toString()
 //        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("MainActivity", "onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("MainActivity", "onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("MainActivity", "onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("MainActivity", "onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("MainActivity", "デストロイ")
     }
 
     fun sendMessage() {
