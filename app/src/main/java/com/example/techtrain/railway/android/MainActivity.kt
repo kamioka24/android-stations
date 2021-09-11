@@ -2,6 +2,7 @@ package com.example.techtrain.railway.android
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.techtrain.railway.android.databinding.ActivityMainBinding
 
@@ -28,13 +29,20 @@ class MainActivity : AppCompatActivity() {
 //        }
 
         binding.resultButton.setOnClickListener {
-            val intent = Intent(this, ResultActivity::class.java)
-            startActivity(intent)
+            sendMessage()
         }
 
         // リアルタイムで editText に入力している文字を textView に反映させる。
 //        editText.addTextChangedListener {
 //            textView.text = it.toString()
 //        }
+    }
+
+    fun sendMessage() {
+        val message = binding.editText.text.toString()
+        val intent = Intent(this, ResultActivity::class.java).apply {
+            putExtra("KEY_INPUT_TEXT", message)
+        }
+        startActivity(intent)
     }
 }
