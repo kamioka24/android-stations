@@ -12,7 +12,7 @@ class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.d("MainActivity", "クリエイト")
+        Log.d("MainActivity", "onCreate")
 
         binding = ActivityResultBinding.inflate(layoutInflater).apply {
             setContentView(this.root)
@@ -25,22 +25,22 @@ class ResultActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.d("MainActivity", "スタート")
+        Log.d("MainActivity", "onStart")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d("MainActivity", "リジューム")
+        Log.d("MainActivity", "onResume")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("MainActivity", "パース")
+        Log.d("MainActivity", "onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d("MainActivity", "ストップ")
+        Log.d("MainActivity", "onStop")
     }
 
     override fun onDestroy() {
