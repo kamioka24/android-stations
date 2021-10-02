@@ -3,10 +3,12 @@ package com.example.techtrain.railway.android
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.techtrain.railway.android.Adapter.BookViewAdapter
 import com.example.techtrain.railway.android.Repository.BookRepository
-import com.example.techtrain.railway.android.ViewModel.MainViewModel
 import com.example.techtrain.railway.android.databinding.ActivityMainBinding
-import okhttp3.ResponseBody
+import com.example.techtrain.railway.android.databinding.BookListBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,6 +19,10 @@ class MainActivity : AppCompatActivity() {
 
     // ① binding クラスを lateinit var で宣言。
     private lateinit var binding: ActivityMainBinding
+    private lateinit var binding2: BookListBinding
+
+    val bookList = mutableListOf<Book>()
+    val adapter = BookViewAdapter(this, bookList)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,44 +41,20 @@ class MainActivity : AppCompatActivity() {
 //            binding.textView.text = binding.editText.text.toString()
 //        }
 
-        binding.resultButton.setOnClickListener {
-            sendApi()
+        binding.bookRecyclerView.also {
+            recyclerView: RecyclerView ->
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager = LinearLayoutManager(this)
         }
 
-//        MainViewModel().text.observe(this, { text ->
-//            binding.textView.text = text
-//        })
+        sendApi()
 
-        // リアルタイムで editText に入力している文字を textView に反映させる。
-//        editText.addTextChangedListener {
-//            textView.text = it.toString()
+//        binding.resultButton.setOnClickListener {
+//            // RecyclerViewにAdapterとLayoutManagerを設定
+//
 //        }
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        Log.d("MainActivity", "onStart")
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//        Log.d("MainActivity", "onResume")
-//    }
-//
-//    override fun onPause() {
-//        super.onPause()
-//        Log.d("MainActivity", "onPause")
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        Log.d("MainActivity", "onStop")
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        Log.d("MainActivity", "onDestroy")
-//    }
 
 //    fun sendMessage() {
 //        val message = binding.editText.text.toString()
@@ -94,8 +76,9 @@ class MainActivity : AppCompatActivity() {
                     response: Response<List<Book>>
                 ) {
                     Log.d("MainActivity", "成功！！")
-                    val books = response.body() ?: return
-                    binding.textView.text = books.toString()
+                    val book = response.body()
+                    book?.let { bookList.addAll(book) }
+                    adapter.notifyDataSetChanged() // recyclerView の更新（データ更新時）
                 }
 
                 override fun onFailure(call: Call<List<Book>>, t: Throwable) {
@@ -105,7 +88,6 @@ class MainActivity : AppCompatActivity() {
 //            text.postValue(get.toString()) // サブスレッドで処理したものをメインスレッドに投げる
         } catch (e: Exception) {
             Log.d("MainActivity", "失敗！！:" + e.message)
-            binding.textView.text = "失敗！！"
         }
     }
 }
