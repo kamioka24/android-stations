@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     // ① binding クラスを lateinit var で宣言。
     private lateinit var binding: ActivityMainBinding
-    private lateinit var binding2: BookListBinding
 
     val bookList = mutableListOf<Book>()
     val adapter = BookViewAdapter(this, bookList)
@@ -35,24 +34,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         // ③ アクセスしたい View の id は勝手にキャメルケースに代わる。
-//        binding.textView.text = "ここが変わるよ！！"
-//
-//        binding.button.setOnClickListener {
-//            binding.textView.text = binding.editText.text.toString()
-//        }
 
-        binding.bookRecyclerView.also {
-            recyclerView: RecyclerView ->
-            recyclerView.adapter = adapter
-            recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.button.setOnClickListener {
+            // RecyclerViewにAdapterとLayoutManagerを設定
+            binding.bookRecyclerView.also {
+                    recyclerView: RecyclerView ->
+                recyclerView.adapter = adapter
+                recyclerView.layoutManager = LinearLayoutManager(this)
+            }
         }
-
         sendApi()
-
-//        binding.resultButton.setOnClickListener {
-//            // RecyclerViewにAdapterとLayoutManagerを設定
-//
-//        }
     }
 
 
